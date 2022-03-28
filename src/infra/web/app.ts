@@ -28,6 +28,7 @@ import BcryptEncrypter from '@/auth/adapters/encrypter/BcryptEncrypter'
 import UserRepositoryTypeOrm from '@/auth/adapters/repositories/typeorm/UserRepositoryTypeOrm'
 import ForbiddenError from '@/auth/application/errors/ForbiddenError'
 import UnauthorizedError from '@/auth/application/errors/UnauthorizedError'
+import { appConfig } from '../config/config'
 
 export class App {
   private app: express.Application
@@ -187,7 +188,10 @@ export class App {
   private makeAuthController() {
     // const userRepository = new UserRepositoryInMem([])
     const userRepository = new UserRepositoryTypeOrm(this.connection)
-    const authenticator = new JwtAuthenticator('secret', 3600)
+    const authenticator = new JwtAuthenticator(
+      appConfig.JWT_SECRET,
+      appConfig.JWT_EXPIRES_IN
+    )
     const encrypter = new BcryptEncrypter()
     return new AuthController(
       new SigninUserImpl(userRepository, authenticator, encrypter),

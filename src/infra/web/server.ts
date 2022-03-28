@@ -1,5 +1,6 @@
 import http from 'http'
 import { App } from 'infra/web/app'
+import { appConfig } from '../config/config'
 import { connect } from '../data/connection'
 
 process.on('unhandledRejection', (err) => {
@@ -13,7 +14,7 @@ process.on('uncaughtException', (err) => {
 
 export default function run() {
   connect().then((connection) => {
-    const port = process.env.PORT || 4000
+    const port = appConfig.PORT
     const app = new App(connection).getApp()
     const server = http.createServer(app)
     server.listen(port, () =>

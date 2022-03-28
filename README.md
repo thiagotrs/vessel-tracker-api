@@ -29,6 +29,24 @@ npm install
 npm start
 ```
 
+## Configuration
+
+Create 'development.env' file in the root directory with these variables:
+
+```
+APP_PORT = 4000
+APP_HOST = localhost
+
+JWT_SECRET = super-secret
+JWT_EXPIRES_IN = 3600
+
+TYPEORM_CONNECTION = sqlite
+TYPEORM_DATABASE = "./src/infra/data/database.sqlite"
+TYPEORM_ENTITIES = "./src/**/*Entity.ts"
+TYPEORM_MIGRATIONS = "./src/infra/data/migrations/*.ts"
+TYPEORM_MIGRATIONS_DIR = "./src/infra/data/migrations"
+```
+
 ### URLs
 
 ```
