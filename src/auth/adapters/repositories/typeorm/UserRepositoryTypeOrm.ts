@@ -1,5 +1,5 @@
-import IUserRepository from '@/auth/application/port/IUserRepository'
-import User from '@/auth/domain/User'
+import IUserRepository from '../../../application/port/IUserRepository'
+import User from '../../../domain/User'
 import { Connection } from 'typeorm'
 import UserEntity from './entities/UserEntity'
 

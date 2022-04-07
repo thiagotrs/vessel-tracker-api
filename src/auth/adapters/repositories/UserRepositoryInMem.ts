@@ -1,5 +1,5 @@
-import IUserRepository from '@/auth/application/port/IUserRepository'
-import User from '@/auth/domain/User'
+import IUserRepository from '../../application/port/IUserRepository'
+import User from '../../domain/User'
 
 export default class UserRepositoryInMem implements IUserRepository {
   private _users: User[]

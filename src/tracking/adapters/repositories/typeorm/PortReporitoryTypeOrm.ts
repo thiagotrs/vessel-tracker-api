@@ -1,5 +1,5 @@
-import IPortRepository from '@/tracking/application/port/IPortRepository'
-import Port from '@/tracking/domain/Port'
+import IPortRepository from '../../../application/port/IPortRepository'
+import Port from '../../../domain/Port'
 import { Connection } from 'typeorm'
 import { PortEntity } from './entities/PortEntity'
 

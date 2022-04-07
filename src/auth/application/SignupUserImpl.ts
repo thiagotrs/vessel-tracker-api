@@ -4,7 +4,7 @@ import ISignupUser from './port/ISignupUser'
 import IUserRepository from './port/IUserRepository'
 import TokenDto from './dto/TokenDto'
 import IEncrypter from './port/IEncrypter'
-import IllegalOperationError from '@/tracking/domain/errors/IllegalOperationError'
+import IllegalOperationError from '../../tracking/domain/errors/IllegalOperationError'
 
 export default class SignupUserImpl implements ISignupUser {
   private readonly userRepository: IUserRepository

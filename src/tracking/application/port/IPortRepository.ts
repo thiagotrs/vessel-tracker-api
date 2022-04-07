@@ -1,4 +1,4 @@
-import Port from '@/tracking/domain/Port'
+import Port from '../../domain/Port'
 
 export default interface IPortRepository {
   findAll(): Promise<Port[]>

@@ -1,3 +1,3 @@
-import run from '@/infra/web/server'
+import run from './infra/web/server'
 
 run()

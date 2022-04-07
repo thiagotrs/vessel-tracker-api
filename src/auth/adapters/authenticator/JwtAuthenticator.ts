@@ -1,7 +1,7 @@
-import { PayloadDto } from '@/auth/application/dto/PayloadDto'
-import TokenDto from '@/auth/application/dto/TokenDto'
-import UnauthorizedError from '@/auth/application/errors/UnauthorizedError'
-import IAuthenticator from '@/auth/application/port/IAuthenticator'
+import { PayloadDto } from '../../application/dto/PayloadDto'
+import TokenDto from '../../application/dto/TokenDto'
+import UnauthorizedError from '../../application/errors/UnauthorizedError'
+import IAuthenticator from '../../application/port/IAuthenticator'
 import jwt, { JwtPayload } from 'jsonwebtoken'
 
 export default class JwtAuthenticator implements IAuthenticator {

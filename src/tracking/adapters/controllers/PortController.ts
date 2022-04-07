@@ -1,9 +1,9 @@
-import ICreatePort from '@/tracking/application/port/ICreatePort'
-import IDeletePort from '@/tracking/application/port/IDeletePort'
-import { IGetAllPorts } from '@/tracking/application/port/IGetAllPorts'
-import { IGetPortById } from '@/tracking/application/port/IGetPortById'
-import IllegalOperationError from '@/tracking/domain/errors/IllegalOperationError'
-import Port from '@/tracking/domain/Port'
+import ICreatePort from '../../application/port/ICreatePort'
+import IDeletePort from '../../application/port/IDeletePort'
+import { IGetAllPorts } from '../../application/port/IGetAllPorts'
+import { IGetPortById } from '../../application/port/IGetPortById'
+import IllegalOperationError from '../../domain/errors/IllegalOperationError'
+import Port from '../../domain/Port'
 import { Request, Response } from 'express'
 
 export default class PortController {

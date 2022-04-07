@@ -1,7 +1,7 @@
-import UnauthorizedError from '@/auth/application/errors/UnauthorizedError'
-import IIsAuthenticated from '@/auth/application/port/IIsAuthenticated'
-import ISigninUser from '@/auth/application/port/ISigninUser'
-import ISignupUser from '@/auth/application/port/ISignupUser'
+import UnauthorizedError from '../../application/errors/UnauthorizedError'
+import IIsAuthenticated from '../../application/port/IIsAuthenticated'
+import ISigninUser from '../../application/port/ISigninUser'
+import ISignupUser from '../../application/port/ISignupUser'
 import { NextFunction, Request, Response } from 'express'
 
 export default class AuthController {

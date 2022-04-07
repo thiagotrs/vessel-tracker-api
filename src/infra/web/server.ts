@@ -1,5 +1,5 @@
 import http from 'http'
-import { App } from 'infra/web/app'
+import { App } from './app'
 import { appConfig } from '../config/config'
 import { connect } from '../data/connection'
 

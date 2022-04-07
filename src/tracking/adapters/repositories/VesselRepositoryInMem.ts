@@ -1,5 +1,5 @@
-import IVesselRepository from '@/tracking/application/port/IVesselRepository'
-import Vessel from '@/tracking/domain/Vessel'
+import IVesselRepository from '../../application/port/IVesselRepository'
+import Vessel from '../../domain/Vessel'
 
 export default class VesselRepositoryInMem implements IVesselRepository {
   private _vessels: Vessel[]

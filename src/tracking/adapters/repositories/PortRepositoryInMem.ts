@@ -1,5 +1,5 @@
-import IPortRepository from '@/tracking/application/port/IPortRepository'
-import Port from '@/tracking/domain/Port'
+import IPortRepository from '../../application/port/IPortRepository'
+import Port from '../../domain/Port'
 
 export default class PortRepositoryInMem implements IPortRepository {
   private _ports: Port[]

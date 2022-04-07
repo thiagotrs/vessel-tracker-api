@@ -1,4 +1,4 @@
-import Vessel from '@/tracking/domain/Vessel'
+import Vessel from '../../domain/Vessel'
 
 export default interface IGetAllVessls {
   execute(): Promise<Vessel[]>

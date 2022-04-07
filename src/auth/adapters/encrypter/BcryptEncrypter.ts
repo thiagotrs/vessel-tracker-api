@@ -1,4 +1,4 @@
-import IEncrypter from '@/auth/application/port/IEncrypter'
+import IEncrypter from '../../application/port/IEncrypter'
 import bcrypt from 'bcrypt'
 
 export default class BcryptEncrypter implements IEncrypter {
