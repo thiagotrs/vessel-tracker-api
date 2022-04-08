@@ -1,0 +1,21 @@
+version: '3'
+
+volumes:
+  vt-volume:
+
+services:
+  api:
+    image: vessel-tracker-api:1.0
+    container_name: vessel-tracker-api
+    ports:
+      - 4000:4000
+    working_dir: /home/app
+    environment:
+      APP_PORT: 4000
+      JWT_SECRET: super-secret
+      JWT_EXPIRES_IN: 3600
+      TYPEORM_CONNECTION: sqlite
+      TYPEORM_DATABASE: "./database/database.sqlite"
+      TYPEORM_ENTITIES: "./dist/**/*Entity.js"
+    volumes:
+      - "vt-volume:/home/app/database"
