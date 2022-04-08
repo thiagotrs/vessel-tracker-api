@@ -5,7 +5,7 @@ volumes:
 
 services:
   api:
-    image: vessel-tracker-api:1.0
+    build: .
     container_name: vessel-tracker-api
     ports:
       - 4000:4000

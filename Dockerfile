@@ -31,7 +31,7 @@ ENV TYPEORM_ENTITIES=${TYPEORM_ENTITIES}
 WORKDIR /home/app
 
 COPY package.json package-lock.json ./
-RUN npm ci --production
+RUN npm ci --production && npm cache clean --force
 
 COPY database.sqlite ./database/
 
