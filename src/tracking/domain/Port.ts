@@ -67,6 +67,7 @@ export default class Port {
     const isCapacityValid = this._capacity && this._capacity > 0
     const isCoordinatesValid =
       this._coordinates === null ||
+      this._coordinates === undefined ||
       (this._coordinates[0] <= 90 &&
         this._coordinates[0] >= -90 &&
         this._coordinates[1] <= 180 &&

@@ -37,13 +37,7 @@ export default class PortController {
 
   public async create(req: Request, res: Response): Promise<Response> {
     if (
-      !(
-        req.body.name &&
-        req.body.capacity &&
-        req.body.country &&
-        req.body.city &&
-        req.body.coordinates
-      )
+      !(req.body.name && req.body.capacity && req.body.country && req.body.city)
     ) {
       throw new IllegalOperationError('Invalid args')
     }

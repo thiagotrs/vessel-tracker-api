@@ -17,8 +17,6 @@ export default class ReplaceAllNextStopsImpl implements IReplaceAllNextStops {
       throw new NotFoundError('Vessel do not exists')
     }
 
-    // TODO: verify if ports exists!
-
     const nextStops = nextPortIds.map((portId) => Stop.create(portId))
 
     vesselResult.replaceAllNextStops(nextStops)

@@ -23,14 +23,7 @@ export default class PortRepositoryTypeOrm implements IPortRepository {
   }
 
   async delete(port: Port): Promise<void> {
-    await this.connection.manager.transaction(async (tx) => {
-      try {
-        await tx.delete(PortEntity, port.id)
-        // await this.connection.getRepository(PortEntity).delete(port.id)
-      } catch (error) {
-        throw new Error('Invalid Operation.')
-      }
-    })
+    await this.connection.getRepository(PortEntity).delete(port.id)
   }
 
   async save(port: Port): Promise<void> {

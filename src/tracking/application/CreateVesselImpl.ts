@@ -15,8 +15,6 @@ export default class CreateVesselImpl implements ICreateVessel {
     year: number,
     portId: string
   ): Promise<void> {
-    // TODO: verify if port exists!
-
     const vessel = Vessel.create(name, ownership, year, portId)
 
     await this.vesselRepository.save(vessel)

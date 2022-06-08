@@ -4,6 +4,7 @@ import Vessel, { VesselStatus } from '../../../domain/Vessel'
 import { Connection } from 'typeorm'
 import { StopEntity } from './entities/StopEntity'
 import { VesselEntity, VesselEntityStatus } from './entities/VesselEntity'
+import IllegalOperationError from '@/tracking/domain/errors/IllegalOperationError'
 
 export default class VesselRepositoryTypeOrm implements IVesselRepository {
   private readonly connection
@@ -46,7 +47,15 @@ export default class VesselRepositoryTypeOrm implements IVesselRepository {
     vesselEntity.stops = vesselEntity.stops.concat(
       vessel.nextStops.map((stop) => this.toStopEntity(stop))
     )
-    await this.connection.getRepository(VesselEntity).save(vesselEntity)
+
+    await this.connection.manager.transaction(async (tx) => {
+      try {
+        await tx.save(vesselEntity)
+        // await this.connection.getRepository(VesselEntity).save(vesselEntity)
+      } catch (error) {
+        throw new IllegalOperationError('Invalid Operation.')
+      }
+    })
   }
 
   private toData(vesselEntity: VesselEntity): Vessel {
