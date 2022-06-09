@@ -4,7 +4,7 @@ import Vessel, { VesselStatus } from '../../../domain/Vessel'
 import { Connection } from 'typeorm'
 import { StopEntity } from './entities/StopEntity'
 import { VesselEntity, VesselEntityStatus } from './entities/VesselEntity'
-import IllegalOperationError from '@/tracking/domain/errors/IllegalOperationError'
+import IllegalOperationError from '../../../domain/errors/IllegalOperationError'
 
 export default class VesselRepositoryTypeOrm implements IVesselRepository {
   private readonly connection
