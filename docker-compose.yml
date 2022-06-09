@@ -1,21 +1,53 @@
-version: '3'
+version: '3.1'
+
+networks:
+  vessel-tracker-net:
 
 volumes:
-  vt-volume:
+  node-modules-vol: {}
+  postgres-data-vol: {}
 
 services:
+  database:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: vessel-tracker
+    networks:
+      - vessel-tracker-net
+    volumes:
+      - postgres-data-vol:/var/lib/postgresql/data
+
   api:
-    build: .
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
     container_name: vessel-tracker-api
     ports:
       - 4000:4000
-    working_dir: /home/app
     environment:
       APP_PORT: 4000
       JWT_SECRET: super-secret
       JWT_EXPIRES_IN: 3600
-      TYPEORM_CONNECTION: sqlite
-      TYPEORM_DATABASE: "./database/database.sqlite"
-      TYPEORM_ENTITIES: "./dist/**/*Entity.js"
+      TYPEORM_CONNECTION: postgres
+      TYPEORM_HOST: database
+      TYPEORM_USERNAME: root
+      TYPEORM_PASSWORD: admin
+      TYPEORM_DATABASE: vessel-tracker
+      TYPEORM_PORT: 5432
+      TYPEORM_MIGRATIONS: "./src/infra/data/migrations/*.ts"
+      TYPEORM_LOGGING: 'true'
+      TYPEORM_MIGRATIONS_RUN: 'true'
+    networks:
+      - vessel-tracker-net
     volumes:
-      - "vt-volume:/home/app/database"
+      - $PWD/src:/src
+      - node-modules-vol:/src/node_modules
+    depends_on:
+      - database
+    
